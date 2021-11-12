@@ -320,6 +320,7 @@ public class MasterMind {
         String challengeLevel = getChallengeLevel(scanner);
 //        System.out.println(challengeLevel);
         int [] codedValue = setupCode(challengeLevel);
+        codedValue = new int[] {1,3,1};
 //        System.out.println(Arrays.toString(codedValue));
 
         int numberOfAttempts = setNumberOfAttempts(challengeLevel);
