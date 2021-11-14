@@ -3,7 +3,6 @@ package day6.dmcme.binary;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
 
 public class BinaryFunction {
 
@@ -87,20 +86,20 @@ public class BinaryFunction {
 //                scanner.close();
 //            }
         }
-        while (continueLoop == true);
+        while (continueLoop);
 
     }
 
     public static String generateRandom64BitBinary() {
 
         Random random = new Random();
-        String tempValue = "";
+        StringBuilder tempValue = new StringBuilder();
 
         for (int i = 0; i < 64; i++) {
-            tempValue += random.nextInt(2);
+            tempValue.append(random.nextInt(2));
         }
 
-        return tempValue;
+        return tempValue.toString();
     }
 
     /**
@@ -150,7 +149,7 @@ public class BinaryFunction {
      */
     public static String convertIntToString(int inputDecimal) {
 
-        String returnString = "";
+        String returnString;
         if(inputDecimal < 0) {
             inputDecimal *= -1;
             returnString = standardizeString(Integer.toBinaryString(inputDecimal));
@@ -192,9 +191,6 @@ public class BinaryFunction {
      */
     public static void displayAllValues(HashMap<Integer, HashMap<String, Integer>> inputHashMap) {
         displayTableHeader();
-//        for (int i = 0; i <inputHashMap.size(); i++) {
-//            System.out.println(inputHashMap.get(i));
-//        }
         for (Integer i : inputHashMap.keySet()){
             System.out.print(i+ "\t\t\t");
             for (String s: inputHashMap.get(i).keySet()) {
@@ -222,18 +218,18 @@ public class BinaryFunction {
      */
     public static String segregateString (String inputString) {
 
-        String returnString = "";
+        StringBuilder returnString = new StringBuilder();
         int sizeOfInput = inputString.length();
         for (int i = 0; i < inputString.length(); i++) {
-            returnString += inputString.charAt(i) + "\t";
+            returnString.append(inputString.charAt(i)).append("\t");
         }
 
         while (sizeOfInput < 8) {
-            returnString = "0\t" + returnString;
+            returnString.insert(0, "0\t");
             sizeOfInput += 1;
         }
 
-        return returnString;
+        return returnString.toString();
     }
 
     /**
@@ -258,7 +254,7 @@ public class BinaryFunction {
             }
 
         }
-        while (timeToExit == false);
+        while (!timeToExit);
 
         return userChoice;
     }
@@ -286,7 +282,7 @@ public class BinaryFunction {
         int numberOne = convertBinaryStringToInt(binaryOne);
         int numberTwo = convertBinaryStringToInt(binaryTwo);
         int result = numberOne + numberTwo;
-        String returnString = "";
+        String returnString;
 
         if(result > 127 || result < - 128){
             returnString = "Error";
@@ -321,7 +317,7 @@ public class BinaryFunction {
      */
     public static String displayLine(String firstLabel, String binaryStringValue) {
 
-        String returnString = "";
+        String returnString;
 
         if (binaryStringValue.equals("Error")) {
             returnString = firstLabel + "\t\t Invalid. Number is bigger than Allowable size";
@@ -342,7 +338,7 @@ public class BinaryFunction {
      */
     public static String standardizeString (String inputString) {
 
-        String returnString = "";
+        StringBuilder returnString = new StringBuilder();
 
         if (inputString.contains("[")) {
             inputString = inputString.substring(1, inputString.length()-1);
@@ -350,7 +346,7 @@ public class BinaryFunction {
 
         int stringLength = inputString.length();
         while (stringLength < 8) {
-            returnString += "0";
+            returnString.append("0");
             stringLength += 1;
         }
 
@@ -358,9 +354,9 @@ public class BinaryFunction {
             inputString = inputString.substring(1, inputString.length()-1);
         }
 
-        returnString = returnString + inputString;
+        returnString.append(inputString);
 
-        return returnString;
+        return returnString.toString();
     }
 
     /**
@@ -391,7 +387,7 @@ public class BinaryFunction {
             }
 
         }
-        while (exitLoop == false);
+        while (!exitLoop);
 
 
         return booleanString;
@@ -419,7 +415,7 @@ public class BinaryFunction {
         int numberOne = convertBinaryStringToInt(binaryOne);
         int numberTwo = convertBinaryStringToInt(binaryTwo);
         int result = numberOne - numberTwo;
-        String returnString = "";
+        String returnString;
 
         if(result > 127 || result < - 128){
             returnString = "Error";
@@ -456,7 +452,7 @@ public class BinaryFunction {
             }
 
         }
-        while (validValue == false);
+        while (!validValue);
 
         return returnInt;
     }
