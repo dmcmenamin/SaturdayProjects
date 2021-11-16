@@ -10,7 +10,8 @@ public class BinaryFunction {
 
         String sixtyFourBitBinaryNumber = generateRandom64BitBinary();
 
-        HashMap<Integer, HashMap<String, Integer>> binaryStringTable = splitBinaryStringInToHashMap(sixtyFourBitBinaryNumber);
+        HashMap<Integer, HashMap<String, Integer>> binaryStringTable =
+                splitBinaryStringInToHashMap(sixtyFourBitBinaryNumber);
         boolean continueLoop = true;
         Scanner scanner = new Scanner(System.in);
 
